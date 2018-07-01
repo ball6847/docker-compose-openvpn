@@ -1,0 +1,16 @@
+version: '3'
+
+# please refer to this link (https://github.com/kylemanna/docker-openvpn/blob/1498795de2fcc77f958a9e1238243c59b9b76291/README.md)
+# on how to generating a certificate for a user
+
+services:
+  openvpn:
+    restart: unless-stopped
+    image: kylemanna/openvpn:1.1.0
+    volumes:
+      - ./data:/etc/openvpn
+    ports:
+      - 1194:1194/udp
+    cap_add:
+      - NET_ADMIN
+
